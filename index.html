@@ -1,717 +1,453 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brazil — Land of Rivers, Rainforests & Remarkable Wonders</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --green: #009C3B;
-    --yellow: #FFDF00;
-    --blue: #002776;
-    --dark: #0d1117;
-    --light: #f7f4ee;
-    --warm: #e8e0d0;
-    --accent: #c8a84b;
-    --text: #1a1a2e;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brazil — Land of Rivers, Rainforests & Remarkable Wonders</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --green:   #1a6b3c;
+      --gold:    #e8b84b;
+      --cream:   #fdf8ee;
+      --ink:     #1c1c1c;
+      --muted:   #5a5a5a;
+      --light-g: #e8f4ee;
+      --white:   #ffffff;
+      --radius:  6px;
+    }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; }
 
-body {
-font-family: ‘Source Serif 4’, Georgia, serif;
-background: var(–light);
-color: var(–text);
-overflow-x: hidden;
-}
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
+    .nav-brand { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: .03em; }
+    .nav-links { display: flex; gap: 1.4rem; list-style: none; }
+    .nav-links a { color: #d4f0de; text-decoration: none; font-size: .88rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--gold); }
 
-/* TOP BAR */
-.topbar {
-background: var(–blue);
-color: white;
-font-family: ‘Space Mono’, monospace;
-font-size: 0.7rem;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-padding: 8px 2rem;
-display: flex;
-gap: 2rem;
-align-items: center;
-}
-.topbar span { opacity: 0.6; }
-.topbar strong { opacity: 1; }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 92vh;
+      background: linear-gradient(160deg, #0d4a28 0%, #1a6b3c 45%, #2d8a55 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 4rem 1.5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png') center/cover no-repeat;
+      opacity: .08;
+    }
+    .hero-flag-img {
+      width: min(420px, 88vw);
+      border-radius: 10px;
+      box-shadow: 0 16px 48px rgba(0,0,0,.45);
+      margin-bottom: 2.4rem;
+      border: 4px solid var(--gold);
+      animation: fadeUp .9s ease both;
+    }
+    .hero-eyebrow { color: var(--gold); font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; margin-bottom: .8rem; animation: fadeUp .7s .1s ease both; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 4.2rem); color: #fff; line-height: 1.15; animation: fadeUp .7s .2s ease both; }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub { color: #b8e8c8; font-size: 1.05rem; max-width: 540px; margin: 1rem auto 2rem; animation: fadeUp .7s .3s ease both; }
+    .hero-cta { display: inline-block; background: var(--gold); color: var(--ink); padding: .75rem 2rem; border-radius: 40px; font-weight: 700; text-decoration: none; letter-spacing: .04em; transition: transform .2s, box-shadow .2s; animation: fadeUp .7s .4s ease both; }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(232,184,75,.4); }
 
-/* HERO */
-.hero {
-background: linear-gradient(160deg, var(–blue) 0%, #001a5c 50%, #002040 100%);
-color: white;
-padding: 4rem 2rem 5rem;
-text-align: center;
-position: relative;
-overflow: hidden;
-}
-.hero::before {
-content: ‘’;
-position: absolute;
-inset: 0;
-background: radial-gradient(ellipse at 60% 40%, rgba(0,156,59,0.18) 0%, transparent 65%),
-radial-gradient(ellipse at 20% 80%, rgba(255,223,0,0.1) 0%, transparent 50%);
-}
-.hero-badge {
-display: inline-block;
-background: var(–green);
-color: white;
-font-family: ‘Space Mono’, monospace;
-font-size: 0.65rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-padding: 5px 14px;
-border-radius: 2px;
-margin-bottom: 1.2rem;
-}
-.hero h1 {
-font-family: ‘Playfair Display’, Georgia, serif;
-font-size: clamp(3rem, 9vw, 7rem);
-font-weight: 900;
-line-height: 0.95;
-letter-spacing: -0.02em;
-margin-bottom: 1rem;
-position: relative;
-}
-.hero h1 span {
-color: var(–yellow);
-}
-.hero-sub {
-font-size: 1rem;
-font-style: italic;
-opacity: 0.75;
-max-width: 480px;
-margin: 0 auto 2rem;
-line-height: 1.6;
-font-weight: 300;
-}
-.hero-btn {
-display: inline-block;
-background: var(–yellow);
-color: var(–blue);
-font-family: ‘Space Mono’, monospace;
-font-size: 0.75rem;
-font-weight: 700;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-padding: 14px 32px;
-border-radius: 3px;
-text-decoration: none;
-transition: transform 0.2s, box-shadow 0.2s;
-}
-.hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,223,0,0.3); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-/* NAV TABS */
-.nav-tabs {
-background: white;
-border-bottom: 2px solid var(–warm);
-display: flex;
-justify-content: center;
-gap: 0;
-position: sticky;
-top: 0;
-z-index: 100;
-box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-.nav-tabs a {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.65rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: #666;
-text-decoration: none;
-padding: 14px 20px;
-border-bottom: 3px solid transparent;
-transition: all 0.2s;
-}
-.nav-tabs a:hover, .nav-tabs a.active {
-color: var(–blue);
-border-bottom-color: var(–green);
-}
+    /* ─── SECTIONS ─── */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { display: inline-block; background: var(--light-g); color: var(--green); font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: .3rem .85rem; border-radius: 40px; margin-bottom: 1rem; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--green); margin-bottom: 1rem; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--green); margin-bottom: .6rem; }
+    p { margin-bottom: 1rem; color: var(--ink); }
 
-/* MAIN CONTENT */
-.container {
-max-width: 860px;
-margin: 0 auto;
-padding: 0 1.5rem;
-}
+    /* alt section bg */
+    .bg-white { background: var(--white); }
+    .bg-green { background: var(--green); }
+    .bg-green h2, .bg-green p, .bg-green li { color: #e8f4ee; }
+    .bg-green .section-label { background: rgba(255,255,255,.15); color: var(--gold); }
+    .bg-green h2 { color: var(--gold); }
 
-/* SECTION HEADERS */
-.section-label {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.65rem;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(–green);
-margin-bottom: 0.5rem;
-}
+    /* ─── FACT GRID ─── */
+    .fact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .fact-card { background: var(--white); border-radius: var(--radius); padding: 1.2rem 1.4rem; border-left: 4px solid var(--gold); box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .fact-card .label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .fact-card .value { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--green); font-weight: 700; margin-top: .2rem; }
 
-/* NATION OF SUPERLATIVES */
-.superlatives {
-padding: 4rem 0 3rem;
-}
-.superlatives h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.8rem, 4vw, 2.8rem);
-font-weight: 700;
-margin-bottom: 1.2rem;
-line-height: 1.1;
-}
-.superlatives p {
-font-size: 1rem;
-line-height: 1.75;
-color: #333;
-max-width: 720px;
-margin-bottom: 1rem;
-}
+    /* ─── ABOUT PAGE ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-photo { width: 100%; border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.15); border: 3px solid var(--gold); }
+    blockquote { border-left: 4px solid var(--gold); padding: .8rem 1.2rem; background: var(--light-g); border-radius: 0 var(--radius) var(--radius) 0; font-style: italic; color: var(--muted); margin: 1.2rem 0; }
 
-/* KEY FACTS BOX */
-.key-facts {
-background: var(–blue);
-color: white;
-border-radius: 6px;
-padding: 1.8rem 2rem;
-margin: 2.5rem 0;
-}
-.key-facts h3 {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.75rem;
-letter-spacing: 0.15em;
-text-transform: uppercase;
-color: var(–yellow);
-margin-bottom: 1.2rem;
-}
-.facts-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 1rem 2rem;
-}
-.fact-item {
-border-bottom: 1px solid rgba(255,255,255,0.1);
-padding-bottom: 0.8rem;
-}
-.fact-label {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.6rem;
-letter-spacing: 0.12em;
-text-transform: uppercase;
-opacity: 0.55;
-margin-bottom: 3px;
-}
-.fact-value {
-font-size: 0.95rem;
-font-weight: 600;
-}
+    /* ─── MAP SECTION ─── */
+    .map-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .map-card { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.09); transition: transform .25s; }
+    .map-card:hover { transform: translateY(-4px); }
+    .map-card img { width: 100%; height: 220px; object-fit: cover; display: block; border-bottom: 3px solid var(--gold); }
+    .map-card-body { padding: 1.2rem 1.4rem; }
+    .map-card-body h3 { font-size: 1.1rem; margin-bottom: .4rem; }
+    .map-card-body p { font-size: .92rem; color: var(--muted); margin: 0; }
+    .map-number { display: inline-block; background: var(--gold); color: var(--ink); font-size: .75rem; font-weight: 800; padding: .15rem .55rem; border-radius: 40px; margin-bottom: .5rem; }
 
-/* CITY SECTION */
-.city-section {
-border-top: 2px solid var(–warm);
-padding: 3rem 0;
-}
-.city-header {
-display: flex;
-align-items: flex-start;
-gap: 1.5rem;
-margin-bottom: 1.5rem;
-}
-.city-tag {
-background: var(–green);
-color: white;
-font-family: ‘Space Mono’, monospace;
-font-size: 0.6rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-padding: 4px 10px;
-border-radius: 2px;
-white-space: nowrap;
-margin-top: 6px;
-}
-.city-section h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-line-height: 1.1;
-}
-.city-section p {
-font-size: 0.97rem;
-line-height: 1.75;
-color: #333;
-margin-bottom: 1rem;
-}
-.city-stats {
-display: flex;
-gap: 2rem;
-margin-top: 1.5rem;
-padding: 1.2rem 0;
-border-top: 1px solid var(–warm);
-border-bottom: 1px solid var(–warm);
-}
-.city-stat { text-align: center; }
-.city-stat .num {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.6rem;
-font-weight: 700;
-color: var(–blue);
-display: block;
-}
-.city-stat .lbl {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.58rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: #888;
-}
+    /* ─── Q&A ─── */
+    .qa-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1.4rem; }
+    .qa-item { background: var(--white); border-radius: var(--radius); padding: 1.4rem 1.6rem; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .qa-item strong { color: var(--green); display: block; font-family: 'Playfair Display', serif; font-size: 1.05rem; margin-bottom: .4rem; }
 
-/* LANDSCAPES */
-.landscapes {
-padding: 3rem 0;
-border-top: 2px solid var(–warm);
-}
-.landscapes h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-margin-bottom: 0.5rem;
-}
-.landscapes > .container > p {
-font-size: 0.97rem;
-color: #555;
-margin-bottom: 2rem;
-font-style: italic;
-}
+    /* ─── CARTOGRAPHER ─── */
+    .carto-card { background: var(--white); border-radius: 10px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,.08); display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: start; margin-top: 1.8rem; }
+    @media (max-width: 620px) { .carto-card { grid-template-columns: 1fr; } }
+    .carto-card img { width: 100%; border-radius: 8px; border: 3px solid var(--gold); }
+    .carto-tag { display: inline-block; background: var(--light-g); color: var(--green); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .6rem; border-radius: 40px; margin-bottom: .6rem; }
 
-/* LANDSCAPE CARDS */
-.landscape-card {
-display: grid;
-grid-template-columns: 1fr 2fr;
-gap: 1.5rem;
-margin-bottom: 2rem;
-padding-bottom: 2rem;
-border-bottom: 1px solid var(–warm);
-align-items: start;
-}
-.landscape-card:last-child { border-bottom: none; }
-.landscape-img {
-aspect-ratio: 4/3;
-border-radius: 4px;
-overflow: hidden;
-background: var(–warm);
-display: flex;
-align-items: center;
-justify-content: center;
-}
-.landscape-img img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-}
-.landscape-img .placeholder {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.65rem;
-color: #aaa;
-text-align: center;
-padding: 1rem;
-}
-.landscape-card h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.3rem;
-margin-bottom: 0.5rem;
-}
-.landscape-card p {
-font-size: 0.93rem;
-line-height: 1.7;
-color: #444;
-}
-.landscape-num {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.6rem;
-letter-spacing: 0.1em;
-color: var(–green);
-margin-bottom: 4px;
-}
+    /* ─── EARTH PROCESSES GRID ─── */
+    .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 2rem; }
+    .process-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 1.4rem; text-align: center; transition: background .2s; }
+    .process-card:hover { background: rgba(255,255,255,.16); }
+    .process-card .icon { font-size: 2rem; margin-bottom: .6rem; display: block; }
+    .process-card h4 { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: .4rem; }
+    .process-card p { font-size: .85rem; color: #b8e8c8; margin: 0; }
+    .process-card a { color: inherit; text-decoration: none; display: block; }
 
-/* RIVERS SECTION */
-.rivers {
-background: var(–blue);
-color: white;
-padding: 4rem 0;
-}
-.rivers h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.8rem, 4vw, 3rem);
-margin-bottom: 0.5rem;
-}
-.rivers .intro {
-font-size: 0.95rem;
-opacity: 0.7;
-font-style: italic;
-margin-bottom: 2.5rem;
-max-width: 600px;
-}
-.river-list { display: flex; flex-direction: column; gap: 1.5rem; }
-.river-item {
-border-left: 3px solid var(–green);
-padding-left: 1.2rem;
-}
-.river-item h3 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1.2rem;
-margin-bottom: 0.3rem;
-color: var(–yellow);
-}
-.river-item p {
-font-size: 0.9rem;
-line-height: 1.65;
-opacity: 0.8;
-}
+    /* ─── REFERENCES ─── */
+    .ref-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: .9rem; }
+    .ref-list li { background: var(--white); padding: 1rem 1.4rem; border-radius: var(--radius); font-size: .9rem; color: var(--muted); border-left: 3px solid var(--light-g); }
+    .ref-list li span.ref-author { color: var(--ink); font-weight: 600; }
 
-/* EARTH PROCESSES */
-.processes {
-padding: 4rem 0;
-border-top: 2px solid var(–warm);
-}
-.processes h2 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-margin-bottom: 0.4rem;
-}
-.processes .intro {
-font-size: 0.95rem;
-color: #666;
-font-style: italic;
-margin-bottom: 2rem;
-}
-.process-grid {
-display: grid;
-grid-template-columns: repeat(2, 1fr);
-gap: 1.2rem;
-}
-.process-card {
-background: white;
-border: 1px solid var(–warm);
-border-radius: 5px;
-padding: 1.4rem;
-transition: transform 0.2s, box-shadow 0.2s;
-}
-.process-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.process-icon {
-font-size: 1.5rem;
-margin-bottom: 0.7rem;
-}
-.process-card h4 {
-font-family: ‘Playfair Display’, serif;
-font-size: 1rem;
-margin-bottom: 0.4rem;
-}
-.process-card p {
-font-size: 0.83rem;
-line-height: 1.6;
-color: #666;
-}
+    /* ─── FOOTER ─── */
+    footer { background: #0d2a18; color: #6aaa82; text-align: center; padding: 2rem 1rem; font-size: .85rem; }
+    footer strong { color: var(--gold); }
 
-/* FOOTER */
-footer {
-background: var(–dark);
-color: white;
-padding: 2rem;
-text-align: center;
-}
-footer .footer-nav {
-display: flex;
-justify-content: center;
-gap: 2rem;
-margin-bottom: 1rem;
-flex-wrap: wrap;
-}
-footer .footer-nav a {
-font-family: ‘Space Mono’, monospace;
-font-size: 0.65rem;
-letter-spacing: 0.1em;
-text-transform: uppercase;
-color: rgba(255,255,255,0.5);
-text-decoration: none;
-transition: color 0.2s;
-}
-footer .footer-nav a:hover { color: var(–yellow); }
-footer p {
-font-size: 0.8rem;
-opacity: 0.35;
-font-family: ‘Space Mono’, monospace;
-}
-
-/* DIVIDER */
-.divider {
-width: 60px;
-height: 3px;
-background: var(–green);
-margin: 1rem 0 1.5rem;
-}
-
-@media (max-width: 600px) {
-.facts-grid { grid-template-columns: 1fr; }
-.landscape-card { grid-template-columns: 1fr; }
-.process-grid { grid-template-columns: 1fr; }
-.city-stats { flex-wrap: wrap; gap: 1rem; }
-.nav-tabs { overflow-x: auto; justify-content: flex-start; }
-}
-</style>
-
+    /* ─── DIVIDER ─── */
+    .wave { display: block; width: 100%; height: 60px; }
+  </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-
-<div class="topbar">
-  <strong>Earth Science</strong>
-  <span>·</span>
-  <span>Discovery Project</span>
-  <span>·</span>
-  <span>Explore Earth Processes</span>
-</div>
-
-<!-- HERO -->
-
-<section class="hero">
-  <div class="hero-badge">Earth Science · Discovery Project</div>
-  <h1><span>Brazil</span></h1>
-  <p class="hero-sub">Land of Rivers, Rainforests &amp; Remarkable Wonders</p>
-  <a href="#about" class="hero-btn">Explore Earth Processes</a>
-</section>
-
-<!-- NAV TABS -->
-
-<nav class="nav-tabs">
-  <a href="#overview" class="active">Overview</a>
-  <a href="#historical">Historical</a>
-  <a href="#cultural">Cultural</a>
-  <a href="#economic">Economic</a>
-  <a href="#overview">Overview</a>
+<!-- ════ NAV ════ -->
+<nav>
+  <span class="nav-brand">🇧🇷 Peterson Pinheiro · Brazil</span>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#maps">Maps</a></li>
+    <li><a href="#processes">Earth Processes</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
 </nav>
 
-<!-- NATION OF SUPERLATIVES -->
+<!-- ════ HOME ════ -->
+<section id="home" class="hero">
+  <!-- PROFESSOR NOTE: Brazil flag photo via Wikimedia Commons (public domain) -->
+  <img
+    class="hero-flag-img"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png"
+    alt="Flag of Brazil – green field with yellow diamond and blue globe"
+  />
+  <p class="hero-eyebrow">Earth Science · Discovery Project</p>
+  <h1>Brazil<br/><em>Land of Rivers, Rainforests<br/>&amp; Remarkable Wonders</em></h1>
+  <p class="hero-sub">Exploring the geophysical processes shaping the world's fifth-largest nation.</p>
+  <a href="#about" class="hero-cta">Begin Exploring ↓</a>
+</section>
 
-<section class="superlatives" id="overview">
+<!-- Home overview -->
+<section class="bg-white" id="overview">
   <div class="container">
-    <p class="section-label">Historical · Cultural · Economic Overview</p>
+    <span class="section-label">Overview</span>
     <h2>A Nation of Superlatives</h2>
-    <div class="divider"></div>
-    <p>Brazil is the largest country in South America and the fifth largest in the world by size and population. It is the only Portuguese-speaking nation in the Americas and holds a unique place in global culture, economics, and ecology. From the colonial era of the 1500s through independence in 1822, and rapid industrialization and urbanization of the 1900s, Brazil has forged a rich multicultural identity blending indigenous, African, European, and Asian heritages.</p>
-    <p>Economically, Brazil is a powerhouse in agriculture (home of the world's largest exports of coffee, soybeans, and sugarcane) and ranks as the world's 10th-largest economy. With over 200 endemic sovereign nations, Brazil is also home to one of the world's most vibrant student cultures — famous for futebol, samba, carnival, and its world-renewing capacity.</p>
-    <p>Its social landscape is shaped by deep inequality alongside vibrant community life. With over 215 million inhabitants speaking dozens of indigenous languages alongside Portuguese, Brazil represents remarkable biodiversity set against breathtaking natural landscapes.</p>
+    <p>Brazil is the largest country in South America and the fifth largest in the world by both area and population. As the only Portuguese-speaking nation in the Americas, it occupies a unique position in global culture, economics, and ecology. From the colonial era beginning in the 1500s, through independence in 1822, to rapid industrialization in the twentieth century, Brazil has forged a rich multicultural identity blending indigenous, African, European, and Asian heritages.</p>
+    <p>Economically, Brazil is a major agricultural exporter — leading global exports of coffee, soybeans, and sugarcane — and ranks among the world's top ten economies. With over 215 million inhabitants speaking dozens of indigenous languages alongside Portuguese, Brazil embodies remarkable human diversity set against some of the planet's most breathtaking natural landscapes.</p>
 
-```
-<!-- KEY FACTS -->
-<div class="key-facts">
-  <h3>Key Facts</h3>
-  <div class="facts-grid">
-    <div class="fact-item">
-      <div class="fact-label">Capital</div>
-      <div class="fact-value">Brasília</div>
+    <div class="fact-grid">
+      <div class="fact-card"><div class="label">Capital</div><div class="value">Brasília</div></div>
+      <div class="fact-card"><div class="label">Area</div><div class="value">8,515,767 km²</div></div>
+      <div class="fact-card"><div class="label">Population</div><div class="value">~215 million</div></div>
+      <div class="fact-card"><div class="label">Currency</div><div class="value">Brazilian Real (BRL)</div></div>
+      <div class="fact-card"><div class="label">Independence</div><div class="value">Sep. 7, 1822</div></div>
+      <div class="fact-card"><div class="label">Language</div><div class="value">Portuguese</div></div>
     </div>
-    <div class="fact-item">
-      <div class="fact-label">São Paulo</div>
-      <div class="fact-value">São Paulo</div>
-    </div>
-    <div class="fact-item">
-      <div class="fact-label">Area</div>
-      <div class="fact-value">8,515,767 km² (largest in S. America)</div>
-    </div>
-    <div class="fact-item">
-      <div class="fact-label">Currency</div>
-      <div class="fact-value">Brazilian Real (BRL)</div>
-    </div>
-    <div class="fact-item">
-      <div class="fact-label">Population</div>
-      <div class="fact-value">~215 million (2022)</div>
-    </div>
-    <div class="fact-item">
-      <div class="fact-label">Independence</div>
-      <div class="fact-value">September 7, 1822 (from Portugal)</div>
-    </div>
-  </div>
-  <div style="margin-top:1.2rem; font-family:'Space Mono',monospace; font-size:0.7rem; opacity:0.5;">São Paulo dyche</div>
-</div>
-```
 
+    <!-- 🖼️ ADD A PHOTO OF BRAZIL HERE -->
+    <!-- Replace the src below with a real photo URL or upload one to your GitHub repo -->
+    <!-- Example: a photo of Iguazú Falls, Rio's cityscape, the Amazon, Carnival, etc. -->
+    <div style="margin-top:2.5rem; border-radius:10px; overflow:hidden; box-shadow:0 8px 28px rgba(0,0,0,.12);">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Iguazu_Argentina.jpg/1280px-Iguazu_Argentina.jpg"
+        alt="Iguazú Falls — one of Brazil's most iconic natural landmarks"
+        style="width:100%; height:340px; object-fit:cover; display:block;"
+      />
+      <p style="background:#f0faf4; padding:.7rem 1rem; font-size:.85rem; color:var(--muted); text-align:center; margin:0;">
+        Iguazú Falls, stretching over 2.7 km along Brazil's border with Argentina, is one of the world's largest waterfall systems and a UNESCO World Heritage Site. 📷 Wikimedia Commons
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- SÃO PAULO -->
-
-<section class="city-section">
+<!-- ════ ABOUT ════ -->
+<section id="about">
   <div class="container">
-    <div class="city-header">
+    <span class="section-label">About This Project</span>
+    <h2>My Ties to Brazil</h2>
+
+    <div class="about-grid">
       <div>
-        <p class="section-label">São Paulo</p>
-        <h2>São Paulo — <em>Cosmopolitan Capital</em></h2>
+        <!-- 🖼️ ADD YOUR PERSONAL PHOTO HERE (optional) -->
+        <!-- Replace src with a photo of yourself or a meaningful Brazil photo -->
+        <img
+          class="about-photo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Jundiai_panorama.jpg/1280px-Jundiai_panorama.jpg"
+          alt="Panoramic view of Jundiaí, São Paulo, Brazil"
+        />
+        <p style="font-size:.8rem; color:var(--muted); margin-top:.5rem; text-align:center;">
+          Jundiaí, São Paulo — the city in the interior of Brazil where Peterson was born and raised.
+        </p>
       </div>
-      <span class="city-tag">Economic Capital</span>
-    </div>
-    <p>São Paulo is the most populous city in the Southern Hemisphere and is home to approximately 12 million residents in the city proper and over <strong>20 million in the greater metropolitan area</strong>, making it one of the largest urban agglomerations on Earth.</p>
-    <p>The city's growth from a small Jesuit settlement in 1554 to a massive 20th-century transformation is a testament to relentless ambition. São Paulo is one of the key economic and cultural heart of Brazil — a city of extreme contrasts: gleaming skyscrapers meet hillside favelas; Michelin-starred restaurants neighbor open-air markets.</p>
-    <p>Today São Paulo is among the world's top 10 economic cities, with a metro area GDP of over <strong>$400 billion USD</strong>, and the city serves as a hub for finance, fashion, art, and gastronomy.</p>
-    <div class="city-stats">
-      <div class="city-stat">
-        <span class="num">12M+</span>
-        <span class="lbl">City Population</span>
-      </div>
-      <div class="city-stat">
-        <span class="num">20M+</span>
-        <span class="lbl">Metro Area</span>
-      </div>
-      <div class="city-stat">
-        <span class="num">$400B</span>
-        <span class="lbl">Metro GDP (USD)</span>
-      </div>
-      <div class="city-stat">
-        <span class="num">1554</span>
-        <span class="lbl">Founded</span>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- NATURAL LANDSCAPES -->
+      <div>
+        <p><strong>Peterson Pinheiro</strong> was born and raised in <strong>Jundiaí, São Paulo</strong>, a city nestled in the interior of Brazil's most populous and economically dynamic state. Growing up in the interior of São Paulo exposed him to the everyday rhythms of Brazilian life — from the rolling hills of the Atlantic Forest transition zone surrounding Jundiaí to the surrounding agricultural landscapes of sugarcane and vineyards for which the region is known. This project is a personal exploration of the land that shaped him, an opportunity to understand the geological, climatic, and hydrological forces that created the country he calls home.</p>
 
-<section class="landscapes" id="landscapes">
-  <div class="container">
-    <p class="section-label">Brazil's Natural Landscapes</p>
-    <h2>From the world's largest rainforest to its iconic wetlands</h2>
-    <div class="divider"></div>
+        <h3 style="margin-top:1.4rem;">One Fascinating Geographic Fact</h3>
+        <p>Brazil is home to the Amazon River basin, which drains approximately <strong>40% of South America</strong> and contains nearly one-fifth of all the fresh water flowing into the world's oceans. The river itself stretches over 6,400 km from the Peruvian Andes to the Atlantic Ocean, and during flood season, the Amazon's width can exceed 50 km in certain areas — so wide that from the middle of the river you cannot see either bank.</p>
 
-```
-<!-- Amazon -->
-<div class="landscape-card">
-  <div class="landscape-img">
-    <div class="placeholder">🌿 Amazon Rainforest<br><small>Add image here</small></div>
-  </div>
-  <div>
-    <div class="landscape-num">01 · Biome</div>
-    <h3>Amazon Rainforest</h3>
-    <p>Brazil contains approximately 60% of the Amazon Rainforest, covering about 3.9 million km². The Amazon is the world's largest tropical rainforest, covering about 5.5 million km², containing about 10% of all species on Earth, and generating approximately 20% of the world's oxygen.</p>
-  </div>
-</div>
-
-<!-- Pantanal -->
-<div class="landscape-card">
-  <div class="landscape-img">
-    <div class="placeholder">🦜 Pantanal<br><small>Add image here</small></div>
-  </div>
-  <div>
-    <div class="landscape-num">02 · Wetland</div>
-    <h3>Pantanal</h3>
-    <p>The world's largest tropical wetland area, at approximately 150,000–195,000 km², is located in west-central Brazil. It is home to over 1,000 bird species, 400 fish species, and extraordinary wildlife including jaguars and giant otters.</p>
-  </div>
-</div>
-
-<!-- Cerrado -->
-<div class="landscape-card">
-  <div class="landscape-img">
-    <div class="placeholder">🌾 Cerrado<br><small>Add image here</small></div>
-  </div>
-  <div>
-    <div class="landscape-num">03 · Savanna</div>
-    <h3>Cerrado</h3>
-    <p>Brazil's vast tropical savanna is the world's most biodiverse savanna ecosystem. Known as the "cradle of waters," the Cerrado feeds eight of Brazil's major river basins and is home to a staggering diversity of endemic plants and wildlife species.</p>
-  </div>
-</div>
-
-<!-- Iguazu -->
-<div class="landscape-card">
-  <div class="landscape-img">
-    <div class="placeholder">💧 Iguazú Falls<br><small>Add image here</small></div>
-  </div>
-  <div>
-    <div class="landscape-num">04 · Waterfall</div>
-    <h3>Iguazú Falls</h3>
-    <p>Stretching over 2.7 km along the border of Brazil and Argentina, Iguazú Falls is one of the world's largest waterfall systems — wider than both Victoria Falls and Niagara Falls. UNESCO World Heritage Site since 1986.</p>
-  </div>
-</div>
-```
-
-  </div>
-</section>
-
-<!-- RIVERS -->
-
-<section class="rivers" id="rivers">
-  <div class="container">
-    <p class="section-label" style="color:var(--yellow)">Hydrology</p>
-    <h2>The Rivers of Brazil</h2>
-    <p class="intro">Brazil contains approximately 12% of the world's available fresh water, flowing through some of the planet's most remarkable river systems.</p>
-    <div class="river-list">
-      <div class="river-item">
-        <h3>Amazon River</h3>
-        <p>Known as the "River Sea," the Amazon discharges about 20% of all fresh water flowing into the world's oceans. It flows 6,400 km from the Andes to the Atlantic, carrying more water than any other river on Earth.</p>
-      </div>
-      <div class="river-item">
-        <h3>Paraná River</h3>
-        <p>South America's second-longest river at nearly 4,880 km, the Paraná flows through Brazil, Paraguay, and Argentina. The Itaipu Dam on the Paraná is one of the world's largest hydroelectric power plants.</p>
-      </div>
-      <div class="river-item">
-        <h3>São Francisco River</h3>
-        <p>Known as the "River of National Unity," it flows 2,900 km through northeastern and eastern Brazil, providing water to millions in one of the driest regions of the country.</p>
+        <h3 style="margin-top:1.4rem;">How the Earth Testifies of a Creator</h3>
+        <blockquote>
+          "All things denote there is a God; yea, even the earth, and all things that are upon the face of it, yea, and its motion, yea, and also all the planets which move in their regular form do witness that there is a Supreme Creator." — Alma 30:44
+        </blockquote>
+        <p>Studying Brazil's geography has deepened my appreciation for this truth. The Amazon Rainforest alone contains an estimated 10% of all species on Earth, operating as a finely balanced system where every organism, from the smallest insect to the largest tree, fulfills a purpose within the whole. The Amazon also generates its own rainfall through the release of water vapor — a process scientists call "flying rivers" — sustaining the very climate that allows it to exist. This kind of interdependent, self-sustaining complexity did not arise by accident. The order, beauty, and precision found in Brazil's ecosystems point to a Supreme Creator whose intelligence and care are written into the natural world.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EARTH PROCESSES -->
-
-<section class="processes" id="earth">
+<!-- ════ MAPS (WEEK 2) ════ -->
+<section id="maps" class="bg-white">
   <div class="container">
-    <p class="section-label">Earth Processes</p>
-    <h2>Explore the science shaping Brazil's landscape</h2>
-    <p class="intro">Uncover the geological, atmospheric and biological processes that have shaped this extraordinary land over millions of years.</p>
+    <span class="section-label">Week 2 · Earth Processes</span>
+    <h2>Maps, Location &amp; Cartographers</h2>
+    <p>Maps tell the story of how people understood, claimed, and navigated Brazil across centuries. Below are four maps that together reveal Brazil's geographic position, colonial history, territorial evolution, and modern boundaries.</p>
+
+    <div class="map-grid">
+
+      <!-- MAP 1 -->
+      <div class="map-card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cantino_planisphere_%281502%29.jpg/1280px-Cantino_planisphere_%281502%29.jpg"
+          alt="Cantino Planisphere 1502 – earliest map showing Brazil"
+        />
+        <div class="map-card-body">
+          <span class="map-number">Map 1</span>
+          <h3>The Cantino Planisphere (1502)</h3>
+          <p>This is one of the earliest known maps to depict the Brazilian coastline, drawn just two years after Pedro Álvares Cabral's Portuguese expedition reached the territory in 1500. The map was secretly smuggled out of Portugal by an Italian spy and shows the coast of "Terra da Vera Cruz" — Brazil's original name — with a green line representing the Tordesillas Treaty boundary dividing Portuguese and Spanish colonial claims. It demonstrates how strategically sensitive geographic knowledge was in the age of exploration.</p>
+        </div>
+      </div>
+
+      <!-- MAP 2 -->
+      <div class="map-card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Brazil_location_map.svg/1280px-Brazil_location_map.svg.png"
+          alt="Modern political map of Brazil showing states and borders"
+        />
+        <div class="map-card-body">
+          <span class="map-number">Map 2</span>
+          <h3>Modern Political Map — Mercator Projection</h3>
+          <p>This contemporary map uses the <strong>Mercator projection</strong>, developed by Flemish cartographer Gerardus Mercator in 1569. It displays Brazil's 26 states and the Federal District, along with its borders with 10 of South America's 12 countries (all except Ecuador and Chile). Brazil occupies the central-eastern portion of the South American continent, spanning from approximately 5°N to 33°S latitude and covering 8.5 million km² — making it the world's fifth-largest country by area.</p>
+        </div>
+      </div>
+
+      <!-- MAP 3 -->
+      <div class="map-card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Brazil_in_South_America_%28-mini_map_-rivers%29.svg/1280px-Brazil_in_South_America_%28-mini_map_-rivers%29.svg.png"
+          alt="Map showing Brazil's position in South America with rivers"
+        />
+        <div class="map-card-body">
+          <span class="map-number">Map 3</span>
+          <h3>Continental Position &amp; Latitudinal Range</h3>
+          <p>This map highlights Brazil's position within South America, illustrating its equatorial to subtropical latitudinal range. Brazil straddles the equator, with its northernmost point (Cabo Orange, Amapá) at approximately <strong>5°16'N</strong> and its southernmost point (Arroio Chuí, Rio Grande do Sul) at approximately <strong>33°45'S</strong>. This vast latitudinal range — nearly 39 degrees — accounts for the extraordinary diversity of Brazil's biomes, from Amazonian rainforest near the equator to temperate grasslands in the far south.</p>
+        </div>
+      </div>
+
+      <!-- MAP 4 -->
+      <div class="map-card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Brazil_biomes_english.svg/1280px-Brazil_biomes_english.svg.png"
+          alt="Map of Brazil's six major biomes"
+        />
+        <div class="map-card-body">
+          <span class="map-number">Map 4</span>
+          <h3>Brazil's Six Major Biomes</h3>
+          <p>This thematic map shows the distribution of Brazil's six recognized biomes: the Amazon rainforest (covering ~49% of the country), the Cerrado savanna (~23%), the Caatinga semi-arid scrubland (~10%), the Atlantic Forest (~13% of its original extent remains), the Pantanal wetlands (~2%), and the Pampa grasslands (~2%). Each biome represents a distinct ecosystem shaped by climate, soils, and geology. The Amazon and Cerrado together account for the majority of Brazil's biodiversity and freshwater resources.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Q&A SECTION -->
+    <div style="margin-top:3.5rem;">
+      <span class="section-label">Location Questions</span>
+      <h2>Geography at a Glance</h2>
+      <ul class="qa-list">
+
+        <li class="qa-item">
+          <strong>On which continent and in what general area is Brazil located?</strong>
+          Brazil is located in <strong>South America</strong>, occupying the central and eastern portion of the continent. It borders every South American country except Ecuador and Chile, and its eastern coastline faces the Atlantic Ocean. Brazil's vast territory covers roughly half of South America's total land area.
+        </li>
+
+        <li class="qa-item">
+          <strong>What is the latitudinal range of Brazil?</strong>
+          Brazil spans from approximately <strong>5°16'N</strong> (Cabo Orange, Amapá, in the north) to <strong>33°45'S</strong> (Arroio Chuí, Rio Grande do Sul, in the south), giving it a total latitudinal range of nearly 39 degrees. In terms of longitude, Brazil extends from roughly 34°47'W to 73°59'W. The country's equatorial location means that large portions receive intense solar radiation year-round, directly influencing the growth of the Amazon rainforest.
+        </li>
+
+        <li class="qa-item">
+          <strong>During what time periods or years has Brazil existed?</strong>
+          Indigenous peoples have inhabited the territory of present-day Brazil for at least <strong>12,000 years</strong>, with some archaeological evidence suggesting human presence as far back as 50,000 years ago. European colonization began in <strong>1500</strong> when Portuguese navigator Pedro Álvares Cabral arrived. Portugal formally established colonial administration in the 1530s, dividing the territory into hereditary captaincies. Brazil declared independence from Portugal on <strong>September 7, 1822</strong>, becoming the Empire of Brazil under Dom Pedro I. It became a federal republic on <strong>November 15, 1889</strong>, following the abolition of slavery in 1888, and has remained a republic to the present day.
+        </li>
+
+        <li class="qa-item">
+          <strong>Are there any famous cartographers who mapped Brazil?</strong>
+          Yes — see the section below for a detailed profile of <strong>João Teixeira Albernaz I</strong>, the most prolific Portuguese cartographer of the seventeenth century, whose work extensively documented colonial Brazil.
+        </li>
+
+      </ul>
+    </div>
+
+    <!-- CARTOGRAPHER SECTION -->
+    <div style="margin-top:3.5rem;">
+      <span class="section-label">Cartographic History</span>
+      <h2>João Teixeira Albernaz I (c. late 1500s – c. 1662)</h2>
+
+      <div class="carto-card">
+        <div>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Jo%C3%A3o_Teixeira_Albernaz_I_-_Mapa_do_Brasil_-_1640.jpg/800px-Jo%C3%A3o_Teixeira_Albernaz_I_-_Mapa_do_Brasil_-_1640.jpg"
+            alt="Map of Brazil by João Teixeira Albernaz I, 1640"
+          />
+          <p style="font-size:.78rem; color:var(--muted); margin-top:.5rem; text-align:center;">Map of Brazil by João Teixeira Albernaz I, 1640. Public domain via Wikimedia Commons.</p>
+        </div>
+
+        <div>
+          <span class="carto-tag">Portuguese Cartographer</span>
+          <p>João Teixeira Albernaz I is widely recognized as <strong>the most prolific Portuguese cartographer of the seventeenth century</strong>. Born into a cartographic dynasty — his father Luís Teixeira was also a royal cosmographer — João was formally trained in the craft from a young age. In 1602, he was examined by the Royal Cosmographer João Batista Lavanha and received the title of "Master of nautical charts, astrolabes, compass needles, and cross staff." Three years later, he was appointed cartographer to the <em>Casa da Índia</em> (India House), the Portuguese state body that regulated international trade and colonial administration (Neatline Maps, n.d.).</p>
+
+          <p>Over the course of his career, Albernaz produced an extraordinary body of work: <strong>19 atlases containing a total of 215 maps</strong> (Wikipedia, 2024). His focus on Brazil was unparalleled among cartographers of the era. His 1640 <em>Atlas of Brazil</em> — formally titled <em>Descripção de todo o Marítimo da Terra de Santa Cruz chamado vulgarmente o Brasil</em> — consisted of 32 sheets documenting the coastline, river mouths, islands, ports, and fortifications of the entire Brazilian coast, with each map preceded by an explanatory text sheet (Wikipedia, 2024).</p>
+
+          <p><strong>His biggest cartographic accomplishments include:</strong></p>
+          <ul style="padding-left:1.4rem; margin-bottom:1rem; color:var(--ink);">
+            <li>His 1630 <em>Taboas Geraes de Toda a Navegação</em> — a comprehensive 32-sheet manuscript world atlas held at the Library of Congress in Washington, D.C., which served as the official Portuguese royal atlas of the era (Library of Congress, n.d.).</li>
+            <li>The 1640 <em>Atlas of Brazil</em>, considered the most detailed cartographic record of colonial Brazil up to that time, documenting all captaincies along the Atlantic coast (Wikipedia, 2024).</li>
+            <li>His work helped establish Brazilian geography as understood in Europe, informing later cartographers and political negotiations over colonial boundaries, including those surrounding the Treaty of Madrid (1750) (Bahia.ws, n.d.).</li>
+          </ul>
+
+          <p>Albernaz worked during a politically charged era in which Portuguese cartographic knowledge was treated as a state secret — maps were handwritten, not printed, to prevent rivals from accessing geographic intelligence. As one scholar explains, "Portuguese cartography has to do with the mode of colonization: commercial, pragmatic and economic" (IBGE News Agency, 2019). Albernaz's maps were part of this strategic project of territorial documentation and defense.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ EARTH PROCESSES OVERVIEW ════ -->
+<section id="processes" class="bg-green">
+  <div class="container">
+    <span class="section-label">Course Project</span>
+    <h2>Earth Processes Pages</h2>
+    <p>Each section below will be developed with research as the course progresses. Click to explore each topic.</p>
     <div class="process-grid">
       <div class="process-card">
-        <div class="process-icon">🗺️</div>
+        <span class="icon">🗺️</span>
         <h4>Maps, Location &amp; Cartographers</h4>
-        <p>Explore Brazil's geography, borders, and the history of cartographic exploration from early colonial maps to satellite imaging.</p>
+        <p>Week 2 — completed above ✓</p>
       </div>
       <div class="process-card">
-        <div class="process-icon">🌋</div>
+        <span class="icon">🌋</span>
         <h4>Plate Tectonics, Earthquakes &amp; Volcanoes</h4>
-        <p>Brazil sits atop the South American Plate. Discover how tectonic forces shaped the Andes and influence seismic activity across the region.</p>
+        <p>Coming — Week 3</p>
       </div>
       <div class="process-card">
-        <div class="process-icon">🌊</div>
-        <h4>Fluvial Processes, Streams &amp; Coastlines</h4>
-        <p>Learn how Brazil's vast river networks carve landscapes, deposit sediments, and create some of the world's most extraordinary deltas and floodplains.</p>
+        <span class="icon">🪨</span>
+        <h4>Weathering, Mass Wasting &amp; Erosion</h4>
+        <p>Coming — Week 4</p>
       </div>
       <div class="process-card">
-        <div class="process-icon">☁️</div>
+        <span class="icon">🌊</span>
+        <h4>Fluvial Processes, Oceans &amp; Coastlines</h4>
+        <p>Coming — Week 5</p>
+      </div>
+      <div class="process-card">
+        <span class="icon">☁️</span>
         <h4>Climate Controls, Biomes &amp; Climate Change</h4>
-        <p>From equatorial rainforests to semi-arid caatinga, explore how climate shapes Brazil's six major biomes and the threats of deforestation.</p>
-      </div>
-      <div class="process-card">
-        <div class="process-icon">🪨</div>
-        <h4>Soils</h4>
-        <p>Brazil's diverse soil types — from fertile terra roxa to nutrient-poor oxisols — play a critical role in the country's agricultural productivity and ecosystem health.</p>
-      </div>
-      <div class="process-card">
-        <div class="process-icon">💧</div>
-        <h4>Weathering, Mass Meeting &amp; Erosion</h4>
-        <p>Intense rainfall and tropical heat accelerate chemical weathering, mass movement, and erosion processes that continuously reshape Brazil's terrain.</p>
+        <p>Coming — Week 6</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ════ REFERENCES ════ -->
+<section id="references">
+  <div class="container">
+    <span class="section-label">Sources</span>
+    <h2>References</h2>
+    <p>All sources are listed in alphabetical order in APA 7th edition format. This page will be updated each week as new content is added.</p>
 
-<footer>
-  <div class="footer-nav">
-    <a href="#">Architecture</a>
-    <a href="#">Earth Science / Overview</a>
-    <a href="#">Contact</a>
+    <ul class="ref-list">
+
+      <li>
+        <span class="ref-author">Bahia.ws.</span> (n.d.). <em>Historical maps of Brazil and the world.</em> Retrieved May 2025, from https://bahia.ws/en/category/historical-maps-of-brazil/
+      </li>
+
+      <li>
+        <span class="ref-author">Brazilian Institute of Geography and Statistics (IBGE).</span> (2022). <em>Brazil in numbers: Population, area, and GDP.</em> IBGE. https://www.ibge.gov.br/en/
+      </li>
+
+      <li>
+        <span class="ref-author">IBGE News Agency.</span> (2019, August 21). <em>Art in maps shows transformations from colonial Brazil up to the present.</em> https://agenciadenoticias.ibge.gov.br/en/agencia-news/2184-news-agency/news/25219-art-in-maps-shows-transformations-from-colonial-brazil-up-to-the-present
+      </li>
+
+      <li>
+        <span class="ref-author">Library of Congress.</span> (n.d.). <em>Luso-Hispanic world in maps: A selective guide to manuscript maps to 1900.</em> https://guides.loc.gov/luso-hispanic-world-in-maps/introduction/scope-of-this-guide
+      </li>
+
+      <li>
+        <span class="ref-author">Neatline Maps.</span> (n.d.). <em>João Teixeira Albernaz I (the Elder).</em> https://neatlinemaps.com/cartographer/joao-teixeira-albernaz-i-the-elder/
+      </li>
+
+      <li>
+        <span class="ref-author">The Church of Jesus Christ of Latter-day Saints.</span> (2013). <em>The Book of Mormon: Another testament of Jesus Christ</em> (Alma 30:44). https://www.churchofjesuschrist.org/
+      </li>
+
+      <li>
+        <span class="ref-author">Wikipedia.</span> (2024, December 11). <em>João Teixeira Albernaz I.</em> https://en.wikipedia.org/wiki/Jo%C3%A3o_Teixeira_Albernaz_I
+      </li>
+
+      <li>
+        <span class="ref-author">Wikipedia.</span> (2024). <em>Brazil.</em> https://en.wikipedia.org/wiki/Brazil
+      </li>
+
+      <!-- ✏️ ADD MORE REFERENCES HERE as you research each week -->
+
+    </ul>
   </div>
-  <p>BrainEsness · Earth Science Discovery Project · Educational Use</p>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <p><strong>Brazilianness</strong> · Earth Science Discovery Project · Educational Use Only</p>
+  <p style="margin-top:.4rem; font-size:.78rem;">All map images sourced from Wikimedia Commons (public domain). Content created for academic purposes.</p>
 </footer>
 
 </body>
